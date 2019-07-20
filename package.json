@@ -1,0 +1,28 @@
+{
+    "name": "my-query-builder",
+    "version": "1.0.0",
+    "description": "MySQL query builder",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/webilix/my-query-builder.git"
+    },
+    "keywords": [
+        "sql",
+        "mysql",
+        "query",
+        "query builder"
+    ],
+    "author": "Ali Amirnezhad",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/webilix/my-query-builder/issues"
+    },
+    "homepage": "https://github.com/webilix/my-query-builder#readme",
+    "devDependencies": {
+        "jest": "^24.8.0"
+    }
+}
