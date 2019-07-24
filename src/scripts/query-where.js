@@ -35,6 +35,9 @@ module.exports = query => {
 
             const { key, value: expresion } = system.getObject(value);
             switch (key) {
+                case '$EQ':
+                    return getQuery(not, `(${queryField(field)} = ${queryValue(expresion)})`);
+
                 case '$NE':
                     return getQuery(not, `(${queryField(field)} <> ${queryValue(expresion)})`);
 

@@ -154,81 +154,89 @@ const query = myQueryBuilder
 // DELETE FROM `users` WHERE ((`ID` = 1)) LIMIT 1
 ```
 
-## Data types
+## Field Values and Functions
 
--   String
--   Number
--   NULL
--   Date
--   Array
--   Object
+| Type              | INSERT                           |                                                 | WHERE                              |                                                   |
+| ----------------- | -------------------------------- | ----------------------------------------------- | ---------------------------------- | ------------------------------------------------- |
+|                   | Sample                           | Result                                          | Sample                             | Result                                            |
+| String            | field: 'value'                   | \`field\` = 'value'                             | {field: 'value'}                   | (\`field\` = 'value')                             |
+| Number            | field: 1                         | \`field\` = 1                                   | {field: 1}                         | (\`field\` = 1)                                   |
+| NULL              | field: null                      | \`field\` = NULL                                | {field: null}                      | ISNULL(field)                                     |
+| Date              | field: new Date()                | \`field\` = '1979-06-03 01:23:45'               | {field: new Date()}                | (\`field\` = '1979-06-03 01:23:45')               |
+| Date: \$NOW       | field: '\$NOW'                   | \`field\` = '1979-06-03 01:23:45'               | {field: '\$NOW'}                   | (\`field\` = '1979-06-03 01:23:45')               |
+| Date: \$DATE      | field: {\$DATE: new Date()}      | \`field\` = '1979-06-03'                        | {field: {\$DATE: new Date()}}      | (\`field\` = '1979-06-03')                        |
+| Date: \$TIME      | field: {\$TIME: new Date()}      | \`field\` = '01:23:45'                          | {field: {\$TIME: new Date()}}      | (\`field\` = '01:23:45')                          |
+| Date: \$YEAR      | field: {\$YEAR: new Date()}      | \`field\` = 1979                                | {field: {\$YEAR: new Date()}}      | (\`field\` = 1979)                                |
+| Date: \$TIMESTAMP | field: {\$TIMESTAMP: new Date()} | \`field\` = 297221025                           | {field: {\$TIMESTAMP: new Date()}} | (\`field\` = 297221025)                           |
+| Array             | field: [1, 2]                    | \`field\` = '{\\"0\\":1,\\"1\\":2}'             | {field: [1, 2]}                    | (\`field\` = '{\\"0\\":1,\\"1\\":2}')             |
+| Object            | field: {a: 'b',c: 'd'}           | \`field\` = '{\\"a\\":\\"b\\",\\"c\\":\\"d\\"}' | {field: {a: 'b',c: 'd'}}           | (\`field\` = '{\\"a\\":\\"b\\",\\"c\\":\\"d\\"}') |
 
 ## SELECT functions
 
--   DISTINCT
--   SUM
--   AVG
--   MAX
--   MIN
--   COUNT
--   ASCII
--   BIN
--   OCT
--   ORD
--   HEX
--   UNHEX
--   BIT_LENGTH
--   TO_BASE64
--   FROM_BASE64
--   DATE
--   TIME
--   YEAR
--   MONTH
--   MONTHNAME
--   WEEK
--   DAYOFYEAR
--   DAYOFMONTH
--   DAYOFWEEK
--   HOUR
--   MINUTE
--   SECOND
--   UNIX_TIMESTAMP
--   LENGTH
--   LCASE
--   LOWER
--   LTRIM
--   RTRIM
--   SPACE
--   TRIM
--   UCASE
--   UPPER
--   REVERSE
--   CONCAT
--   FORMAT
--   INSTR
--   LEFT
--   REPLACE
--   LPAD
--   RPAD
--   SUBSTR
--   SUBSTRING
--   DATE_FORMAT
+-   [DISTINCT](https://github.com/webilix/my-query-builder/wiki/SELECT:-DISTINCT)
+-   [SUM](https://github.com/webilix/my-query-builder/wiki/SELECT:-SUM)
+-   [AVG](https://github.com/webilix/my-query-builder/wiki/SELECT:-AVG)
+-   [MAX](https://github.com/webilix/my-query-builder/wiki/SELECT:-MAX)
+-   [MIN](https://github.com/webilix/my-query-builder/wiki/SELECT:-MIN)
+-   [COUNT](https://github.com/webilix/my-query-builder/wiki/SELECT:-COUNT)
+-   [ASCII](https://github.com/webilix/my-query-builder/wiki/SELECT:-ASCII)
+-   [BIN](https://github.com/webilix/my-query-builder/wiki/SELECT:-BIN)
+-   [OCT](https://github.com/webilix/my-query-builder/wiki/SELECT:-OCT)
+-   [ORD](https://github.com/webilix/my-query-builder/wiki/SELECT:-ORD)
+-   [HEX](https://github.com/webilix/my-query-builder/wiki/SELECT:-HEX)
+-   [UNHEX](https://github.com/webilix/my-query-builder/wiki/SELECT:-UNHEX)
+-   [BIT_LENGTH](https://github.com/webilix/my-query-builder/wiki/SELECT:-BIT_LENGTH)
+-   [TO_BASE64](https://github.com/webilix/my-query-builder/wiki/SELECT:-TO_BASE64)
+-   [FROM_BASE64](https://github.com/webilix/my-query-builder/wiki/SELECT:-FROM_BASE64)
+-   [DATE](https://github.com/webilix/my-query-builder/wiki/SELECT:-DATE)
+-   [TIME](https://github.com/webilix/my-query-builder/wiki/SELECT:-TIME)
+-   [YEAR](https://github.com/webilix/my-query-builder/wiki/SELECT:-YEAR)
+-   [MONTH](https://github.com/webilix/my-query-builder/wiki/SELECT:-MONTH)
+-   [MONTHNAME](https://github.com/webilix/my-query-builder/wiki/SELECT:-MONTHNAME)
+-   [WEEK](https://github.com/webilix/my-query-builder/wiki/SELECT:-WEEK)
+-   [DAYOFYEAR](https://github.com/webilix/my-query-builder/wiki/SELECT:-DAYOFYEAR)
+-   [DAYOFMONTH](https://github.com/webilix/my-query-builder/wiki/SELECT:-DAYOFMONTH)
+-   [DAYOFWEEK](https://github.com/webilix/my-query-builder/wiki/SELECT:-DAYOFWEEK)
+-   [HOUR](https://github.com/webilix/my-query-builder/wiki/SELECT:-HOUR)
+-   [MINUTE](https://github.com/webilix/my-query-builder/wiki/SELECT:-MINUTE)
+-   [SECOND](https://github.com/webilix/my-query-builder/wiki/SELECT:-SECOND)
+-   [UNIX_TIMESTAMP](https://github.com/webilix/my-query-builder/wiki/SELECT:-UNIX_TIMESTAMP)
+-   [LENGTH](https://github.com/webilix/my-query-builder/wiki/SELECT:-LENGTH)
+-   [LCASE](https://github.com/webilix/my-query-builder/wiki/SELECT:-LCASE)
+-   [LOWER](https://github.com/webilix/my-query-builder/wiki/SELECT:-LOWER)
+-   [LTRIM](https://github.com/webilix/my-query-builder/wiki/SELECT:-LTRIM)
+-   [RTRIM](https://github.com/webilix/my-query-builder/wiki/SELECT:-RTRIM)
+-   [SPACE](https://github.com/webilix/my-query-builder/wiki/SELECT:-SPACE)
+-   [TRIM](https://github.com/webilix/my-query-builder/wiki/SELECT:-TRIM)
+-   [UCASE](https://github.com/webilix/my-query-builder/wiki/SELECT:-UCASE)
+-   [UPPER](https://github.com/webilix/my-query-builder/wiki/SELECT:-UPPER)
+-   [REVERSE](https://github.com/webilix/my-query-builder/wiki/SELECT:-REVERSE)
+-   [CONCAT](https://github.com/webilix/my-query-builder/wiki/SELECT:-CONCAT)
+-   [FORMAT](https://github.com/webilix/my-query-builder/wiki/SELECT:-FORMAT)
+-   [INSTR](https://github.com/webilix/my-query-builder/wiki/SELECT:-INSTR)
+-   [LEFT](https://github.com/webilix/my-query-builder/wiki/SELECT:-LEFT)
+-   [REPLACE](https://github.com/webilix/my-query-builder/wiki/SELECT:-REPLACE)
+-   [LPAD](https://github.com/webilix/my-query-builder/wiki/SELECT:-LPAD)
+-   [RPAD](https://github.com/webilix/my-query-builder/wiki/SELECT:-RPAD)
+-   [SUBSTR](https://github.com/webilix/my-query-builder/wiki/SELECT:-SUBSTR)
+-   [SUBSTRING](https://github.com/webilix/my-query-builder/wiki/SELECT:-SUBSTRING)
+-   [DATE_FORMAT](https://github.com/webilix/my-query-builder/wiki/SELECT:-DATE_FORMAT)
 
 ## WHERE / HAVING conditions
 
--   : (equal)
--   null (ISNULL)
--   NOT
--   NE (not equal)
--   BETWEEN
--   IN
--   LIKE
--   LLIKE (like at the end of string)
--   RLIKE (like at the beginning of string)
--   LT (less than)
--   LTE (less than or equal)
--   GT (greater than)
--   GTE (greater than or equal)
+-   [:](https://github.com/webilix/my-query-builder/wiki/WHERE:-:) (equal)
+-   [NOT](https://github.com/webilix/my-query-builder/wiki/WHERE:-NOT)
+-   [EQ](https://github.com/webilix/my-query-builder/wiki/WHERE:-EQ) (equal with value function)
+-   [NE](https://github.com/webilix/my-query-builder/wiki/WHERE:-NE) (not equal)
+-   [BETWEEN](https://github.com/webilix/my-query-builder/wiki/WHERE:-BETWEEN)
+-   [IN](https://github.com/webilix/my-query-builder/wiki/WHERE:-IN)
+-   [LIKE](https://github.com/webilix/my-query-builder/wiki/WHERE:-LIKE)
+-   [LLIKE](https://github.com/webilix/my-query-builder/wiki/WHERE:-LLIKE) (like at the end of string)
+-   [RLIKE](https://github.com/webilix/my-query-builder/wiki/WHERE:-RLIKE) (like at the beginning of string)
+-   [LT](https://github.com/webilix/my-query-builder/wiki/WHERE:-LT) (less than)
+-   [LTE](https://github.com/webilix/my-query-builder/wiki/WHERE:-LTE) (less than or equal)
+-   [GT](https://github.com/webilix/my-query-builder/wiki/WHERE:-GT) (greater than)
+-   [GTE](https://github.com/webilix/my-query-builder/wiki/WHERE:-GTE) (greater than or equal)
 
 ## Tests
 
