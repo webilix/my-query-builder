@@ -2,7 +2,7 @@
 
 MySQL query builder
 
-For more information and complete usage status help please check [wiki](https://github.com/webilix/my-query-builder/wiki/)
+For more information and samples please check [wiki](https://github.com/webilix/my-query-builder/wiki/)
 
 ## Installation
 
