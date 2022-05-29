@@ -23,6 +23,6 @@
     },
     "homepage": "https://github.com/webilix/my-query-builder#readme",
     "devDependencies": {
-        "jest": "^24.8.0"
+        "jest": "^28.1.0"
     }
 }
